@@ -32,7 +32,7 @@
   - name: total_impressions
     title: Total impressions
     type: single_value
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     measures: [ad_insights.total_impressions]
     sorts: [ad_insights.total_impressions desc]
@@ -46,7 +46,7 @@
   - name: total_actions
     title: Total actions
     type: single_value
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     measures: [ad_insights.total_actions]
     sorts: [ad_insights.total_actions desc]
@@ -60,7 +60,7 @@
   - name: total_spend
     title: Total spend
     type: single_value
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     measures: [ad_insights.total_spend]
     sorts: [ad_insights.total_spend desc]
@@ -74,7 +74,7 @@
   - name: spend_actions_impressions
     title: Spend, actions, and impressions over time
     type: looker_line
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     dimensions: [ad_insights.date_start_month]
     measures: [ad_insights.total_spend, ad_insights.total_actions,
@@ -107,7 +107,7 @@
   - name: campaign_performance
     title: Campaign performance
     type: table
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     dimensions: [campaigns.name, adsets.end_date, adsets.effective_status,
       campaigns.objective]
@@ -132,7 +132,7 @@
   - name: campaign_value
     title: Cost per action v. total actions by campaign
     type: looker_scatter
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     dimensions: [campaigns.name]
     measures: [ad_insights.total_actions, ad_insights.total_spend]
@@ -172,7 +172,7 @@
   - name: campaign_delivery
     title: Campaign delivery
     type: table
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     dimensions: [campaigns.name, adsets.end_date, adsets.effective_status,
       campaigns.objective]
@@ -192,7 +192,7 @@
   - name: actions_by_country
     title: Actions by country
     type: looker_geo_choropleth
-    model: facebook
+    model: facebookmodel
     explore: ad_insights_by_country
     dimensions: [ad_insights_by_country.country_iso]
     measures: [ad_insights_by_country.total_actions]
@@ -209,7 +209,7 @@
   - name: campaign_performance_and_clicks
     title: Campaign performance and clicks
     type: table
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     dimensions: [campaigns.name, adsets.effective_status, adsets.end_date,
       campaigns.objective]
@@ -232,7 +232,7 @@
   - name: actions_by_type
     title: Actions by type
     type: looker_pie
-    model: facebook
+    model: facebookmodel
     explore: ad_action_insights
     dimensions: [ad_action_insights.action_type]
     measures: [ad_action_insights.total_actions]
@@ -248,7 +248,7 @@
   - name: avg_frequency_by_objective
     title: Average frequency by objective
     type: looker_column
-    model: facebook
+    model: facebookmodel
     explore: ad_insights
     dimensions: [campaigns.objective]
     measures: [ad_insights.avg_frequency]
@@ -279,7 +279,7 @@
   - name: campaign_engagement
     title: Campaign engagement
     type: table
-    model: facebook
+    model: facebookmodel
     explore: ad_action_insights
     dimensions: [campaigns.name, adsets.effective_status, adsets.end_date,
       campaigns.objective]

@@ -24,7 +24,7 @@
   - name: cpc_ctr_frequency
     title: CPC, CTR, and frequency by device
     type: looker_column
-    model: facebook
+    model: facebookmodel
     explore: ad_insights_by_placement_and_device
     dimensions: [ad_insights_by_placement_and_device.impression_device]
     measures: [ad_insights_by_placement_and_device.avg_cpc, ad_insights_by_placement_and_device.avg_ctr,
@@ -54,7 +54,7 @@
   - name: cpp_cpm
     title: CPP and CPM by device
     type: looker_bar
-    model: facebook
+    model: facebookmodel
     explore: ad_insights_by_placement_and_device
     dimensions: [ad_insights_by_placement_and_device.impression_device]
     measures: [ad_insights_by_placement_and_device.avg_cpp, ad_insights_by_placement_and_device.avg_cpm]
@@ -83,7 +83,7 @@
   - name: top_level_avgs
     title: Top level averages
     type: looker_single_record
-    model: facebook
+    model: facebookmodel
     explore: ad_insights_by_placement_and_device
     measures: [ad_insights_by_placement_and_device.avg_cpc, ad_insights_by_placement_and_device.avg_cpm,
       ad_insights_by_placement_and_device.avg_cpp, ad_insights_by_placement_and_device.avg_ctr,
@@ -96,7 +96,7 @@
   - name: top_level_totals
     title: Top level totals
     type: looker_single_record
-    model: facebook
+    model: facebookmodel
     explore: ad_insights_by_placement_and_device
     measures: [ad_insights_by_placement_and_device.total_reach, ad_insights_by_placement_and_device.total_actions,
       ad_insights_by_placement_and_device.total_clicks, ad_insights_by_placement_and_device.total_impressions,
@@ -109,7 +109,7 @@
   - name: reach_v_clicks
     title: Reach v. clicks by placement and device
     type: looker_scatter
-    model: facebook
+    model: facebookmodel
     explore: ad_insights_by_placement_and_device
     dimensions: [ad_insights_by_placement_and_device.impression_device, ad_insights_by_placement_and_device.placement]
     measures: [ad_insights_by_placement_and_device.total_reach, ad_insights_by_placement_and_device.total_clicks]
@@ -140,7 +140,7 @@
   - name: cpa_v_actions
     title: CPA v. actions by placement and device
     type: looker_scatter
-    model: facebook
+    model: facebookmodel
     explore: ad_insights_by_placement_and_device
     dimensions: [ad_insights_by_placement_and_device.impression_device, ad_insights_by_placement_and_device.placement]
     measures: [ad_insights_by_placement_and_device.total_spend, ad_insights_by_placement_and_device.total_actions]

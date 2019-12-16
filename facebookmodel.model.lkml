@@ -1,4 +1,4 @@
-connection: "facebook_data"
+connection: "scentbird_redshift_stage"
 
 # include all the views
 include: "*.view"
