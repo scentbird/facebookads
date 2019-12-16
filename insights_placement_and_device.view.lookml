@@ -1,5 +1,5 @@
 - view: ad_insights_by_placement_and_device
-  sql_table_name: looker_facebook.facebook_ads_insights_placement_and_device_x
+  sql_table_name: facebook_all_accounts.facebook_ads_insights_placement_and_device_x
   fields:
 
 ## STANDARD FIELDS

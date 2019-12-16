@@ -1,5 +1,5 @@
 - view: adsets
-  sql_table_name: looker_facebook.facebook_adsets_x
+  sql_table_name: facebook_all_accounts.facebook_adsets_x
   fields:
 
   - dimension: id
