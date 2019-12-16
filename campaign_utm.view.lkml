@@ -4,7 +4,7 @@ view: campaign_utm {
       SELECT
         id,
         regexp_matches(object_story_spec__link_data__link,'utm_campaign=([^&]*)') as utm_campaign
-      FROM facebook_all_accounts.facebook_adcreative_101441173373823
+      FROM facebook_all_accounts.adcreative
       ;;
   }
   # later, dimension declarations reference the derived column(s)

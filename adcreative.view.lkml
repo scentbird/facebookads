@@ -1,5 +1,5 @@
 view: adcreative {
-  sql_table_name: facebook_all_accounts.facebook_adcreative_101441173373823 ;;
+  sql_table_name: facebook_all_accounts.adcreative ;;
 
     dimension: actor_id {
       type: string
