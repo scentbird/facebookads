@@ -1,5 +1,5 @@
 view: ad_actions_by_country {
-  sql_table_name: facebook_data.facebook_ads_insights_country_101441173373823__actions ;;
+  sql_table_name: facebook_all_accounts.facebook_ads_insights_country_101441173373823__actions ;;
 
   dimension: ad_id {
     type: string
