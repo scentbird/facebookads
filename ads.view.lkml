@@ -20,7 +20,7 @@ view: ads {
 
   dimension: creative_id {
     type: string
-    sql: ${TABLE}.creative__id ;;
+    sql: json_extract_path_text(${TABLE}.creative, 'id') ;;
 
   }
 

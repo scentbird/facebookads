@@ -88,10 +88,6 @@ view: ad_insights_by_age_and_gender {
     value_format_name: usd
   }
 
-  dimension: website_clicks {
-    type: number
-    sql: ${TABLE}.website_clicks ;;
-  }
 
   ## AGGREGATED MEASURES
 

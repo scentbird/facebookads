@@ -57,12 +57,12 @@ view: adsets {
 
   dimension: targeting__age_max {
     type: number
-    sql: ${TABLE}.targeting__age_max ;;
+    sql: json_extract_path_text(${TABLE}.targeting, 'age_max') ;;
   }
 
   dimension: targeting__age_min {
     type: number
-    sql: ${TABLE}.targeting__age_min ;;
+    sql: json_extract_path_text(${TABLE}.targeting, 'age_min') ;;
   }
 
   measure: count {

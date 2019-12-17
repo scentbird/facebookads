@@ -92,19 +92,9 @@ view: ad_insights {
     value_format_name: usd
   }
 
-  dimension: total_action_value {
-    type: number
-    sql: ${TABLE}.total_action_value ;;
-  }
-
   dimension: actions {
     type: number
-    sql: ${TABLE}.total_actions ;;
-  }
-
-  dimension: website_clicks {
-    type: number
-    sql: ${TABLE}.website_clicks ;;
+    sql: json_array_length(${TABLE}.actions) ;;
   }
 
   ## AGGREGATED MEASURES
@@ -137,11 +127,6 @@ view: ad_insights {
     drill_fields: [detail*]
   }
 
-  measure: people_taking_action {
-    description: "The number of unique people who took an action such as liking your Page or installing your app as a result of your ad. For example, if the same person likes and comments on a post, they will be counted as 1 unique person."
-    type: sum
-    sql: ${TABLE}.total_unique_actions ;;
-  }
 
   measure: total_inline_link_clicks {
     type: sum
