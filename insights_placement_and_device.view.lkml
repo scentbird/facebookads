@@ -1,5 +1,5 @@
 view: ad_insights_by_placement_and_device {
-  sql_table_name: facebook_all_accounts.facebook_ads_insights_placement_and_device_101441173373823 ;;
+  sql_table_name: facebook_all_accounts.ads_insights_platform_and_device ;;
   ## STANDARD FIELDS
 
   dimension: account_id {
@@ -97,7 +97,7 @@ view: ad_insights_by_placement_and_device {
 
   dimension: actions {
     type: number
-    sql: ${TABLE}.total_actions ;;
+    sql: json_array_length(${TABLE}.actions) ;;
   }
 
   ## AGGREGATE MEASURES
@@ -190,7 +190,7 @@ view: ad_insights_by_placement_and_device {
 
   measure: total_actions {
     type: sum
-    sql: ${TABLE}.total_actions ;;
+    sql: ${actions} ;;
     value_format_name: decimal_0
     drill_fields: [detail*]
   }

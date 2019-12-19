@@ -1,5 +1,5 @@
 view: ad_insights_by_country {
-  sql_table_name: facebook_all_accounts.facebook_ads_insights_country_101441173373823 ;;
+  sql_table_name: facebook_all_accounts.ads_insights_country ;;
   ## STANDARD FIELDS
 
   dimension: account_id {
@@ -160,6 +160,6 @@ view: ad_insights_by_country {
 
   measure: total_actions {
     type: sum
-    sql: ${TABLE}.total_actions ;;
+    sql: json_array_length(${TABLE}.actions) ;;
   }
 }
