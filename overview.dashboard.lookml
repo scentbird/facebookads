@@ -87,7 +87,7 @@
     table_theme: editable
     limit_displayed_rows: false
     listen:
-      campaign_name: ad_insights.campaign_name
+      campaign_name: campaigns.name
       date_start: ad_insights.date_start_date
 
   - name: campaign_value
