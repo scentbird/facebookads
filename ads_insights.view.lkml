@@ -97,6 +97,16 @@ view: ad_insights {
     sql: json_array_length(${TABLE}.actions) ;;
   }
 
+  dimension: outbound_clicks {
+    type: number
+    sql: json_array_length(${TABLE}.outbound_clicks) ;;
+  }
+
+  dimension: unique_outbound_clicks {
+    type: number
+    sql: json_array_length(${TABLE}.unique_outbound_clicks) ;;
+  }
+
   ## AGGREGATED MEASURES
 
   measure: count {
