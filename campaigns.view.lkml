@@ -7,6 +7,12 @@ view: campaigns {
     sql: ${TABLE}.id ;;
   }
 
+  dimension_group: start {
+    type: time
+    timeframes: [time, date, week, month, year]
+    sql: ${TABLE}.start_time ;;
+  }
+
   dimension: account_id {
     type: string
     sql: ${TABLE}.account_id ;;

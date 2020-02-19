@@ -70,7 +70,7 @@
     type: table
     model: facebookmodel
     explore: ad_insights
-    dimensions: [campaigns.name, adsets.end_date, adsets.effective_status,
+    dimensions: [campaigns.name, campaigns.start_date, adsets.effective_status,
       campaigns.objective]
     measures: [ad_insights.total_actions, ad_insights.total_clicks,
       ad_insights.total_reach, ad_insights.total_spend]
@@ -135,7 +135,7 @@
     type: table
     model: facebookmodel
     explore: ad_insights
-    dimensions: [campaigns.name, adsets.end_date, adsets.effective_status,
+    dimensions: [campaigns.name, campaigns.start_date, adsets.effective_status,
       campaigns.objective]
     measures: [ad_insights.total_reach, ad_insights.avg_frequency,
       ad_insights.avg_cpp, ad_insights.avg_cpm, ad_insights.total_impressions]
@@ -155,7 +155,7 @@
     type: table
     model: facebookmodel
     explore: ad_insights
-    dimensions: [campaigns.name, adsets.effective_status, adsets.end_date,
+    dimensions: [campaigns.name, adsets.effective_status, campaigns.start_date,
       campaigns.objective]
     measures: [ad_insights.total_actions, ad_insights.total_reach,
       ad_insights.avg_frequency, ad_insights.total_clicks, ad_insights.avg_ctr,
