@@ -119,13 +119,28 @@ view: ad_insights {
 
   dimension: mobile_app_installations {
     type: number
-    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'mobile_app_install', 'value')  ;;
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'app_custom_event.fb_mobile_activate_app', 'value')  ;;
   }
+
+
+  dimension: mobile_app_registrations {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'app_custom_event.fb_mobile_complete_registration', 'value')  ;;
+  }
+
+
 
   dimension: website_ceckout_initiated {
     type: number
     sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'offsite_conversion.fb_pixel_initiate_checkout', 'value')  ;;
   }
+
+
+  dimension: website_complete_registration {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'offsite_conversion.fb_pixel_complete_registration', 'value')  ;;
+  }
+
 
 
   dimension: outbound_clicks {
@@ -167,6 +182,12 @@ view: ad_insights {
   measure: total_mobile_app_installations {
     type: sum
     sql: ${mobile_app_installations} ;;
+    drill_fields: [detail*]
+  }
+
+  measure: total_mobile_app_registrations {
+    type: sum
+    sql: ${mobile_app_registrations} ;;
     drill_fields: [detail*]
   }
 
@@ -220,6 +241,34 @@ view: ad_insights {
     value_format_name: usd
   }
 
+  measure: cost_per_mobile_app_installation {
+    type: number
+    sql: ${total_spend}/${total_mobile_app_installations} ;;
+    drill_fields: [detail*]
+    value_format_name: usd
+  }
+
+
+  measure: cost_per_mobile_app_purchase {
+    type: number
+    sql: ${total_spend}/${total_mobile_app_purchases} ;;
+    drill_fields: [detail*]
+    value_format_name: usd
+  }
+
+  measure: cost_per_website_ceckout_initiated {
+    type: number
+    sql: ${total_spend}/${total_website_ceckout_initiated} ;;
+    drill_fields: [detail*]
+    value_format_name: usd
+  }
+
+  measure: cost_per_inline_link_click {
+    type: number
+    sql: ${total_spend}/${total_inline_link_clicks} ;;
+    drill_fields: [detail*]
+    value_format_name: usd
+  }
 
   measure: total_inline_link_clicks {
     type: sum
@@ -319,6 +368,7 @@ view: ad_insights {
   measure: avg_cost_per_inline_link_click {
     type: average
     sql: ${TABLE}.cost_per_inline_link_click ;;
+    value_format_name: usd
   }
 
   set: detail {
