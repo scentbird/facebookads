@@ -94,23 +94,98 @@ view: ad_insights {
 
   dimension: actions {
     type: number
-    sql: json_array_length(${TABLE}.actions) ;;
+    sql: scnt_sum_for_key_in_array(${TABLE}.actions, 'value')  ;;
   }
+
+  dimension: lading_page_views {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'landing_page_view', 'value')  ;;
+  }
+
+  dimension: website_purchases {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'offsite_conversion.fb_pixel_purchase', 'value');;
+  }
+
+  dimension: website_purchase_values {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.action_values, 'action_type', 'offsite_conversion.fb_pixel_purchase', 'value')  ;;
+  }
+
+  dimension: mobile_app_purchases {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'app_custom_event.fb_mobile_purchase', 'value')  ;;
+  }
+
+  dimension: mobile_app_installations {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'mobile_app_install', 'value')  ;;
+  }
+
+  dimension: website_ceckout_initiated {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'offsite_conversion.fb_pixel_initiate_checkout', 'value')  ;;
+  }
+
 
   dimension: outbound_clicks {
     type: number
-    sql: json_array_length(${TABLE}.outbound_clicks) ;;
+    sql: scnt_sum_for_key_in_array(${TABLE}.outbound_clicks, 'value') ;;
   }
 
   dimension: unique_outbound_clicks {
     type: number
-    sql: json_array_length(${TABLE}.unique_outbound_clicks) ;;
+    sql: scnt_sum_for_key_in_array(${TABLE}.unique_outbound_clicks, 'value') ;;
   }
 
   ## AGGREGATED MEASURES
 
   measure: count {
     type: count
+  }
+
+  measure: total_website_purchases {
+    type: sum
+    sql: ${website_purchases} ;;
+    drill_fields: [detail*]
+  }
+
+
+  measure: total_lading_page_views {
+    type: sum
+    sql: ${lading_page_views} ;;
+    drill_fields: [detail*]
+  }
+
+
+  measure: total_mobile_app_purchases {
+    type: sum
+    sql: ${mobile_app_purchases} ;;
+    drill_fields: [detail*]
+  }
+
+  measure: total_mobile_app_installations {
+    type: sum
+    sql: ${mobile_app_installations} ;;
+    drill_fields: [detail*]
+  }
+
+  measure: total_website_ceckout_initiated {
+    type: sum
+    sql: ${website_ceckout_initiated} ;;
+    drill_fields: [detail*]
+  }
+
+  measure: total_unique_outbound_clicks {
+    type: sum
+    sql: ${unique_outbound_clicks} ;;
+    drill_fields: [detail*]
+  }
+
+  measure: total_outbound_clicks {
+    type: sum
+    sql: ${outbound_clicks} ;;
+    drill_fields: [detail*]
   }
 
   measure: total_actions {
@@ -135,6 +210,14 @@ view: ad_insights {
     type: sum
     sql: ${impressions} ;;
     drill_fields: [detail*]
+  }
+
+
+  measure: cost_per_purchase {
+    type: number
+    sql: ${total_spend}/${total_website_purchases} ;;
+    drill_fields: [detail*]
+    value_format_name: usd
   }
 
 
@@ -178,6 +261,19 @@ view: ad_insights {
   measure: total_spend {
     type: sum
     sql: ${spend} ;;
+    value_format_name: usd
+    drill_fields: [detail*]
+  }
+
+  measure: ROAS {
+    type: number
+    sql: ${total_website_purchase_value}/${total_spend} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: total_website_purchase_value {
+    type: sum
+    sql: ${website_purchase_values} ;;
     value_format_name: usd
     drill_fields: [detail*]
   }
