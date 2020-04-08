@@ -236,14 +236,14 @@ view: ad_insights {
 
   measure: cost_per_purchase {
     type: number
-    sql: ${total_spend}/${total_website_purchases} ;;
+    sql: ${total_spend}/NULLIF(${total_website_purchases},0) ;;
     drill_fields: [detail*]
     value_format_name: usd
   }
 
   measure: cost_per_mobile_app_installation {
     type: number
-    sql: ${total_spend}/${total_mobile_app_installations} ;;
+    sql: ${total_spend}/NULLIF(${total_mobile_app_installations},0) ;;
     drill_fields: [detail*]
     value_format_name: usd
   }
@@ -251,21 +251,21 @@ view: ad_insights {
 
   measure: cost_per_mobile_app_purchase {
     type: number
-    sql: ${total_spend}/${total_mobile_app_purchases} ;;
+    sql: ${total_spend}/NULLIF(${total_mobile_app_purchases},0) ;;
     drill_fields: [detail*]
     value_format_name: usd
   }
 
   measure: cost_per_website_ceckout_initiated {
     type: number
-    sql: ${total_spend}/${total_website_ceckout_initiated} ;;
+    sql: ${total_spend}/NULLIF(${total_website_ceckout_initiated},0) ;;
     drill_fields: [detail*]
     value_format_name: usd
   }
 
   measure: cost_per_inline_link_click {
     type: number
-    sql: ${total_spend}/${total_inline_link_clicks} ;;
+    sql: ${total_spend}/NULLIF(${total_inline_link_clicks},0) ;;
     drill_fields: [detail*]
     value_format_name: usd
   }
@@ -316,7 +316,7 @@ view: ad_insights {
 
   measure: ROAS {
     type: number
-    sql: ${total_website_purchase_value}/${total_spend} ;;
+    sql: ${total_website_purchase_value}/NULLIF(${total_spend},0) ;;
     value_format_name: decimal_2
   }
 
