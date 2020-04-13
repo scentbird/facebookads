@@ -1,4 +1,4 @@
-connection: "scentbird_redshift_stage"
+connection: "scentbird_redshift_prod"
 
 # include all the views
 include: "*.view"
