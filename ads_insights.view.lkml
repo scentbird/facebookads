@@ -107,9 +107,19 @@ view: ad_insights {
     sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'offsite_conversion.fb_pixel_purchase', 'value');;
   }
 
+  dimension: website_1_day_click_purchases {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.actions, 'action_type', 'offsite_conversion.fb_pixel_purchase', '1d_click');;
+  }
+
   dimension: website_purchase_values {
     type: number
     sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.action_values, 'action_type', 'offsite_conversion.fb_pixel_purchase', 'value')  ;;
+  }
+
+  dimension: website_1_day_click_purchase_values {
+    type: number
+    sql: scnt_sum_for_key_in_array_for_markers(${TABLE}.action_values, 'action_type', 'offsite_conversion.fb_pixel_purchase', '1d_click');;
   }
 
   dimension: mobile_app_purchases {
@@ -162,6 +172,12 @@ view: ad_insights {
   measure: total_website_purchases {
     type: sum
     sql: ${website_purchases} ;;
+    drill_fields: [detail*]
+  }
+
+  measure: total_1_day_website_purchases {
+    type: sum
+    sql: ${website_1_day_click_purchases} ;;
     drill_fields: [detail*]
   }
 
@@ -323,6 +339,13 @@ view: ad_insights {
   measure: total_website_purchase_value {
     type: sum
     sql: ${website_purchase_values} ;;
+    value_format_name: usd
+    drill_fields: [detail*]
+  }
+
+  measure: total_1_day_click_website_purchase_value {
+    type: sum
+    sql: ${website_1_day_click_purchase_values} ;;
     value_format_name: usd
     drill_fields: [detail*]
   }
