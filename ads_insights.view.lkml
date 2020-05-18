@@ -60,6 +60,7 @@ view: ad_insights {
   }
 
   dimension_group: date_start {
+    convert_tz: no
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.date_start ;;
